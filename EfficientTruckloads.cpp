@@ -1,7 +1,7 @@
 #include <iostream>
 #include "EfficientTruckloads.h"
 
-int Truckloads::numTrucks(int numCrates, int Loadsize){
+int EfficientTruckloads::numTrucks(int numCrates, int Loadsize){
     if(mem[numCrates] != -1) return mem[numCrates];
     if(numCrates <= Loadsize) {
         mem[numCrates] = 1;
