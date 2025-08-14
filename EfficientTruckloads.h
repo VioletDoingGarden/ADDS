@@ -1,6 +1,6 @@
 #include <vector>
 
-class Truckloads{
+class EfficientTruckloads{
 public:
     int numTrucks(int numCrates, int Loadsize, std::vector<int>& mem);
 };
