@@ -20,11 +20,11 @@ int Truckloads::numTrucks(int numCrates, int Loadsize, std::vector<int>& mem){
 };
 
 
-int main(){
-    std::vector<int> mem(1001, -1); // Assuming numCrates won't exceed 1000
-    int num, size;
-    std::cin >> num >> size;
-    Truckloads truckloads;
-    std::cout << truckloads.numTrucks(num, size,mem) << std::endl;
-    return 0;
-}
+// int main(){
+//     std::vector<int> mem(1001, -1); // Assuming numCrates won't exceed 1000
+//     int num, size;
+//     std::cin >> num >> size;
+//     Truckloads truckloads;
+//     std::cout << truckloads.numTrucks(num, size,mem) << std::endl;
+//     return 0;
+// }
