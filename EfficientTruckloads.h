@@ -2,5 +2,6 @@
 
 class Truckloads{
 public:
-    int numTrucks(int numCrates, int Loadsize, std::vector<int>& mem);
+    std::vector<int> mem = std::vector<int>(5005, -1);
+    int numTrucks(int numCrates, int Loadsize);
 };
