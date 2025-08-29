@@ -11,9 +11,9 @@
             if(result.empty()){
                 tmp = 0;
             } else {
-                tmp = result.back() + 1;
+                tmp = result.back() ;
             }
-            size_t found = s1.find(s2.substr(0, i), tmp);
+            size_t found = s1.find(s2.substr(0, i), tmp );
             if (found != string::npos) {
                 result.push_back(found);
             } else {
@@ -27,4 +27,12 @@
         return result;
     }
 
-   
+   int main() {
+       Finder finder;
+       vector<int> results = finder.findSubstrings("734658732465", "463");
+       for (int index : results) {
+           cout << index << " ";
+       }
+       cout << endl;
+       return 0;
+   }
