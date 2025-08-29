@@ -18,6 +18,10 @@
                 result.push_back(found);
             } else {
                 result.push_back(-1);
+                for(size_t j = i; j <= s2.size(); j++) {
+                    result.push_back(-1);
+                }
+                break;
             }
         }
         return result;
