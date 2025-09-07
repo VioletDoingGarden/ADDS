@@ -4,6 +4,6 @@
 
 class Sort {
 public:
-    virtual std::vector<int> sort(std::vector<int> list) = 0 ;
+     std::vector<int> sort(std::vector<int> list) ;
 };
 #endif // SORT_H

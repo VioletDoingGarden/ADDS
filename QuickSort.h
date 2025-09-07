@@ -9,7 +9,7 @@ public:
 
     int partition(std::vector<int>& list, int low, int high);
 
-    std::vector<int> sort(std::vector<int> list) override ;
+    std::vector<int> sort(std::vector<int> list) ;
 };
 
 #endif // QUICKSORT_H
