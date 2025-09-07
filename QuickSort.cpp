@@ -5,7 +5,7 @@ void QuickSort::quickSort(std::vector<int>& list, int low, int high) {
             quickSort(list, low, pi - 1);
             quickSort(list, pi + 1, high);
         }
-    }
+}
 
 int QuickSort::partition(std::vector<int>& list, int low, int high) {
     int pivotIndex = low;

@@ -4,6 +4,9 @@
 
 class Sort {
 public:
-     std::vector<int> sort(std::vector<int> list) ;
+    std::vector<int> list;
+    std::vector<int> sort(std::vector<int> list) {
+        return list;
+    };
 };
 #endif // SORT_H
