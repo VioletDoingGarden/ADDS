@@ -6,49 +6,37 @@
 #include "QuickSort.h"
 using namespace std;
 
-bool isSorted(const std::vector<int>& list) {
-    for (size_t i = 1; i < list.size(); ++i) {
-        if (list[i - 1] > list[i]) return false;
+bool binarySearch(const std::vector<int>& list, int target) {
+    int left = 0, right = list.size() - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (list[mid] == target) return true;
+        if (list[mid] < target) left = mid + 1;
+        else right = mid - 1;
     }
-    return true;
+    return false;
 }
 
 int main() {
-    BubbleSort bubble;
+    std::vector<int> numbers;
+    int num;
+    char c;
+    while (std::cin >> num) {
+        numbers.push_back(num);
+        c = std::cin.get(); 
+        if (c == '\n') break; 
+    }
+    
     QuickSort quick;
-
-    std::vector<std::vector<int>> tests = {
-        {},              
-        {1},            
-        {3, 1, 4, 2},   
-        {5, 5, 5, 5},    
-        {10, -1, 2, 8},  
-        {1, 2, 3, 4, 5}, 
-        {5, 4, 3, 2, 1}, 
-        {2, 3, 2, 1, 4}, 
-        {1, 2, 2, 3, 3},
-        {2, 4, 9, 1}   
-    };
-
-    std::cout << "BubbleSort Tests:\n";
-    for (const auto& test : tests) {
-        auto result = bubble.sort(test);
-        std::cout << "Input: [";
-        for (size_t i = 0; i < test.size(); ++i) {
-            std::cout << test[i] << (i < test.size() - 1 ? ", " : "");
-        }
-        std::cout << "] -> Sorted: " << (isSorted(result) ? "Pass" : "Fail") << "\n";
+    std::vector<int> sorted = quick.sort(numbers);
+    
+    bool hasOne = binarySearch(sorted, 1);
+    
+    std::cout << (hasOne ? "true" : "false");
+    for (int x : sorted) {
+        std::cout << " " << x;
     }
-
-    std::cout << "\nQuickSort Tests:\n";
-    for (const auto& test : tests) {
-        auto result = quick.sort(test);
-        std::cout << "Input: [";
-        for (size_t i = 0; i < test.size(); ++i) {
-            std::cout << test[i] << (i < test.size() - 1 ? ", " : "");
-        }
-        std::cout << "] -> Sorted: " << (isSorted(result) ? "Pass" : "Fail") << "\n";
-    }
-
+    std::cout << std::endl;
+    
     return 0;
 }
