@@ -2,6 +2,7 @@
 #include "LinkedList.h"
 #include "Node.h"
 #include <iostream>
+#include <limits>
 
 LinkedList::LinkedList() {
     head = nullptr;
@@ -28,7 +29,7 @@ LinkedList::~LinkedList() {
 
 void LinkedList::insertPosition(int pos, int newNum) {
     Node* newNode = new Node(newNum);
-    if (pos == 1 || head == nullptr) {
+    if (pos <= 1 || head == nullptr) {
         newNode->setLink(head);
         head = newNode;
         return;
@@ -46,7 +47,7 @@ void LinkedList::insertPosition(int pos, int newNum) {
 }
 bool LinkedList::deletePosition(int pos) {
     if (pos < 1 || head == nullptr) return false;
-    if (pos == 0) {
+    if (pos == 1) {
         Node* temp = head;
         head = head->getLink();
         delete temp;
@@ -66,6 +67,7 @@ bool LinkedList::deletePosition(int pos) {
 };
 
 int LinkedList::get(int pos) {
+    if (pos < 1 || head == nullptr) return std::numeric_limits<int>::max();
     Node* current = head;
     for (int i = 1; i < pos  && current != nullptr; i++) {
         current = current->getLink();
