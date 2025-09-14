@@ -58,6 +58,8 @@ std::list<int> BigNumCalc::sub(std::list<int> num1, std::list<int> num2) {
         if (it2 != num2.end()) {
             diff -= *it2;
             ++it2;
+        }else{
+            diff -= 0;
         }
         if (diff < 0) {
             diff += 10;
