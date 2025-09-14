@@ -56,7 +56,7 @@ std::list<int> BigNumCalc::sub(std::list<int> num1, std::list<int> num2) {
     while (it1 != num1.end()){
         int digit2 = *it2; 
         if (it2 != num2.end()){
-            it2++; 
+            it2--; 
         }else{
             digit2 = 0;
         }
@@ -72,7 +72,7 @@ std::list<int> BigNumCalc::sub(std::list<int> num1, std::list<int> num2) {
         }
         int diff = digit1 - digit2;
         res.push_front(diff);
-        it1++;
+        it1--;
     }
     while (res.size() > 1 && res.front() == 0)
     {
