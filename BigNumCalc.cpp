@@ -70,7 +70,6 @@ std::list<int> BigNumCalc::sub(std::list<int> num1, std::list<int> num2) {
         if (it2 != num2.end()) ++it2;
     }
 
-    // Remove leading zeros
     while (res.size() > 1 && res.front() == 0) {
         res.pop_front();
     }
