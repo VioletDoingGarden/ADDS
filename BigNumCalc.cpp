@@ -45,37 +45,36 @@ std::list<int> BigNumCalc::add(std::list<int> num1, std::list<int> num2) {
 
 std::list<int> BigNumCalc::sub(std::list<int> num1, std::list<int> num2) {
     std::list<int> res;
-    int carry = 0;
-    
-    // num1.reverse();
-    // num2.reverse();
+    int borrow = 0;
 
-    auto it1 = num1.rbegin();
-    auto it2 = num2.rend();
-    
-    while (it1 != num1.rend() || it2 != num2.rend()) {
-        int diff = carry;
-        if(it1 != num1.rend()) {
-            diff += *it1;
-            ++it1;
-        };
-        if(it2 != num2.rend()) {
-            diff -= *it2;
-            ++it2;
-        };
-        if(diff < 0) {
+    num1.reverse();
+    num2.reverse();
+
+    auto it1 = num1.begin();
+    auto it2 = num2.begin();
+
+    while (it1 != num1.end() || it2 != num2.end()) {
+        int digit1 = (it1 != num1.end()) ? *it1 : 0;
+        int digit2 = (it2 != num2.end()) ? *it2 : 0;
+
+        int diff = digit1 - digit2 - borrow;
+        if (diff < 0) {
             diff += 10;
-            carry = -1;
+            borrow = 1;
         } else {
-            carry = 0;
+            borrow = 0;
         }
         res.push_front(diff);
+
+        if (it1 != num1.end()) ++it1;
+        if (it2 != num2.end()) ++it2;
     }
-    
+
+    // Remove leading zeros
     while (res.size() > 1 && res.front() == 0) {
         res.pop_front();
     }
-    
+
     return res;
 
 }
