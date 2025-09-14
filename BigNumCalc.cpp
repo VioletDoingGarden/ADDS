@@ -5,11 +5,11 @@ BigNumCalc::BigNumCalc() {}
 BigNumCalc::~BigNumCalc() {}
 
 std::list<int> BigNumCalc::buildBigNum(std::string numString) {
-    std::list<int> res;
+    std::list<int> skibidi;
     for (char i : numString) {
-        res.push_back(i - '0');
+        skibidi.push_back(i - '0');
     }
-    return res;
+    return skibidi;
 }
 
 std::list<int> BigNumCalc::add(std::list<int> num1, std::list<int> num2) {
