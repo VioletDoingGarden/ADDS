@@ -47,19 +47,19 @@ std::list<int> BigNumCalc::sub(std::list<int> num1, std::list<int> num2) {
     std::list<int> res;
     int carry = 0;
     
-    num1.reverse();
-    num2.reverse();
+    // num1.reverse();
+    // num2.reverse();
 
-    auto it1 = num1.begin();
-    auto it2 = num2.end();
+    auto it1 = num1.rbegin();
+    auto it2 = num2.rend();
     
-    while (it1 != num1.end() || it2 != num2.end()) {
+    while (it1 != num1.rend() || it2 != num2.rend()) {
         int diff = carry;
-        if(it1 != num1.end()) {
+        if(it1 != num1.rend()) {
             diff += *it1;
             ++it1;
         };
-        if(it2 != num2.end()) {
+        if(it2 != num2.rend()) {
             diff -= *it2;
             ++it2;
         };
