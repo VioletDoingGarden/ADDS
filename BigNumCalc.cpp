@@ -45,7 +45,7 @@ std::list<int> BigNumCalc::add(std::list<int> num1, std::list<int> num2) {
 
 std::list<int> BigNumCalc::sub(std::list<int> num1, std::list<int> num2) {
     std::list<int> res;
-    int borrow = 0;
+    int carry = 0;
     
     num1.reverse();
     num2.reverse();
@@ -54,19 +54,18 @@ std::list<int> BigNumCalc::sub(std::list<int> num1, std::list<int> num2) {
     auto it2 = num2.end();
     
     while (it1 != num1.end()) {
-        int diff = *it1 - borrow;
-        if (it2 != num2.end()) {
-            diff -= *it2;
-            ++it2;
-        }else{
-            diff -= 0;
-        }
-        if (diff < 0) {
-            diff += 10;
-            borrow = 1;
-        } else {
-            borrow = 0;
-        }
+        int d1 = *it2;
+        if(it2 != num2.end()) it2++;
+        else d1 = 0;
+        int d2 =  *it1 - carry;
+        if (d2 > d1)
+        {
+            d1 = d1 + 10;  
+            carry = 1;
+
+        }else   carry = 0;
+        int diff = d1 - d2; 
+        
         res.push_front(diff);
         ++it1;
     }
