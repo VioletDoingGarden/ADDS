@@ -15,6 +15,15 @@ void Trie::Insert(std::string Word){
     cur->isWord = true;
 }
 
+void Trie::Search(std::string PreWord, std::vector<std::string> &res)
+{
+    std::string Word;
+    Node* cur = this->FindWord(PreWord, Word, res);
+    if(Word == PreWord){
+        this->FindAllWords(cur, Word, res);
+    };
+}
+
 void Trie::FindAllWords(Node* node, std::string& PreWord, std::vector<std::string>& res){
     if(node->isWord){
         res.push_back(PreWord);
