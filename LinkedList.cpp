@@ -103,3 +103,16 @@ void LinkedList::printList() {
     }
     std::cout << "]";
 };
+
+void LinkedList::reverse() {
+    Node* prev = nullptr;
+    Node* current = head;
+    Node* next = nullptr;
+    while (current != nullptr) {
+        next = current->getLink();
+        current->setLink(prev);
+        prev = current;
+        current = next;
+    }
+    head = prev;
+}

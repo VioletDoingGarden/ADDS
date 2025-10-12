@@ -7,6 +7,7 @@ private:
 public:
     LinkedList();
     LinkedList(int* array, int len);
+    void reverse();
     void insertPosition(int pos, int newNum);
     bool deletePosition(int pos);
     int get(int pos);

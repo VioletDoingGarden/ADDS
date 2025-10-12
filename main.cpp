@@ -70,9 +70,10 @@ int main(void) {
         submissionList.insertPosition(param_array[0], param_array[1]);
     }
     else if (commandCode=="D") {
-        if (!submissionList.deletePosition(param_array[0])) {
-            cout << "ERROR ";
-        }
+		// if (!submissionList.deletePosition(param_array[0])) {
+		// 	cout << "ERROR ";
+		// }
+		submissionList.reverse();
     }
     else if (commandCode=="S") {
 		int got = submissionList.search(param_array[0]);
