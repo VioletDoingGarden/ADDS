@@ -175,7 +175,7 @@ public:
     void insert(T element)
     {
         this->tree.push_back(element);
-        this->heapifyUp(this->tree.size() - 1);
+        this->heapify(this->tree.size() - 1);
     }
     
 
@@ -199,7 +199,7 @@ public:
         this->tree.at(remove) = this->tree.back();
         this->tree.pop_back();
         if (remove > 1 && this->tree.at(remove) < this->tree.at(this->getParentPosition(remove)))        {
-            this->heapifyUp(remove);
+            this->heapify(remove);
         } else {
             this->heapifyDown(remove);
         }
