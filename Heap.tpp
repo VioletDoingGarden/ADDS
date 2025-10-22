@@ -177,6 +177,7 @@ public:
         this->tree.push_back(element);
         this->heapifyUp(this->tree.size() - 1);
     }
+    
 
     // TO BE IMPLEMENTED
     // Remove an element from the heap
