@@ -175,41 +175,60 @@ public:
     void insert(T element)
     {
         this->tree.push_back(element);
-        this->heapify(this->tree.size() - 1);
+        heapIndex index = this->tree.size() - 1;
+        while (index > 1) {
+            heapIndex parent = this->getParentPosition(index);
+            if (this->tree.at(parent) > this->tree.at(index)) {
+                std::swap(this->tree.at(parent), this->tree.at(index));
+                index = parent;
+            } else {
+                break;
+            }
+        }
     }
-    
 
     // TO BE IMPLEMENTED
     // Remove an element from the heap
     void remove(T value)
     {
-        if (this->isHeapEmpty()) return;
-        heapIndex remove = 0;
+        if (this->isHeapEmpty()) {
+            return;
+        }
+        heapIndex idx = 0;
         for (heapIndex i = 1; i < this->tree.size(); ++i) {
             if (this->tree.at(i) == value) {
-                remove = i;
+                idx = i;
                 break;
             }
         }
-        if (remove == 0) return;
-        if (remove == this->tree.size() - 1) {
+        if (idx == 0) {
+            return;
+        }
+        heapIndex lastidx = this->tree.size() - 1;
+        if (idx == lastidx) {
             this->tree.pop_back();
             return;
         }
-        this->tree.at(remove) = this->tree.back();
+        T lastElement = this->tree.at(lastidx);
+        this->tree.at(idx) = lastElement;
         this->tree.pop_back();
-        if (remove > 1 && this->tree.at(remove) < this->tree.at(this->getParentPosition(remove)))        {
-            this->heapify(remove);
-        } else {
-            this->heapifyDown(remove);
+        while (idx > 1) {
+            heapIndex parent = this->getParentPosition(idx);
+            if (this->tree.at(parent) > this->tree.at(idx)) {
+                std::swap(this->tree.at(parent), this->tree.at(idx));
+                idx = parent;
+            } else {
+                break;
+            }
         }
+        this->heapifyDown(idx);
     }
 
     // TO BE IMPLEMENTED
     // Get the minimum element (in this case, the maximum element of the max-heap)
     T getMin()
     {
-        if (this->isHeapEmpty()) return std::numeric_limits<T>::max();
+        if (this->isHeapEmpty()) return std::numeric_limits<T>::min();
         return this->tree.at(1);
     }
 };
